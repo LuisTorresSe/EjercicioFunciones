@@ -1,0 +1,40 @@
+/*(5.10.5) Crea un programa que emplee recursividad para calcular 
+ el mayor de los elementos de un vector. El planteamiento será 
+muy similar al del ejercicio anterior.*/
+
+using System;
+class Programa
+{
+
+    static int ElementoMayor( int[] vector,int posicionInicial, 
+        int posicionFinal )
+    {
+        if(vector.Length==0)
+            Console.WriteLine("No hay elemento");
+        // case base
+        if(posicionFinal==posicionInicial)
+        {
+            return vector[posicionFinal];
+        }
+      
+        if(vector[posicionInicial]>vector[posicionFinal])
+        {
+            return ElementoMayor(vector, posicionInicial,
+                posicionFinal - 1);
+        }
+        return ElementoMayor(vector, posicionInicial + 1, 
+            posicionFinal);
+    }
+
+
+    static void Main()
+    {
+        int PosicionInicial,PosicionFinal;
+
+        int[] vector = { 1,20,3,4,5};
+        PosicionInicial = Convert.ToInt32(Console.ReadLine())-1;
+        PosicionFinal= Convert.ToInt32(Console.ReadLine())-1;
+        Console.WriteLine( ElementoMayor(vector,PosicionInicial,PosicionFinal) );
+
+    }
+}
